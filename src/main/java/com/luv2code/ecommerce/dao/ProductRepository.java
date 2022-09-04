@@ -19,4 +19,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     // SELECT * FROM Product where category_id=?
     Page<Product> findByCategoryId(@Param("id") Long id, Pageable pageable);
 
+    // SELECT * FROM Product p WHERE p.name LIKE CONCAT('%', :name, '%')
+    Page<Product> findByNameContaining(@Param("name") String name, Pageable pageable);
+
 }
